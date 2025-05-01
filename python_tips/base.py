@@ -27,9 +27,7 @@ def parse_arguments():
         3: logging.INFO,
         4: logging.DEBUG,
     }
-    logging.basicConfig(
-        format='%(message)s', level=verbose[args.v], filename='output/errors.log'
-    )
+    logging.basicConfig(format='%(message)s', level=verbose[args.v], filename='output/errors.log')
     return args
 
 

@@ -42,7 +42,6 @@ def automate_mkdocs_from_docstring(
         for child in ast.iter_child_nodes(tree):
             if isinstance(child, (ast.FunctionDef, ast.ClassDef, ast.AsyncFunctionDef)):
                 if child.name not in ['main']:
-
                     module = importlib.import_module(script.stem)
                     f_ = getattr(module, child.name)
                     function = f_.__name__
@@ -70,7 +69,6 @@ def automate_mkdocs_from_docstring(
 
             for index, line in enumerate(contents):
                 if match_string in line and insert_string not in contents[index + 1]:
-
                     contents = contents[: index + 1]
                     contents.append(insert_string)
                     break
@@ -247,7 +245,7 @@ def docstring_from_type_hints(repo_dir: Path, overwrite_script: bool = False, te
                             for (idx, new_arg) in sorted_arguments:
                                 docstring_lines[idx] = new_arg
 
-                            docstring_lines = [f"{' '*docstring_node.col_offset}{line}" for line in docstring_lines]
+                            docstring_lines = [f"{' ' * docstring_node.col_offset}{line}" for line in docstring_lines]
                             new_docstring = '\n'.join(docstring_lines)
 
                             function_docs.append(
@@ -296,8 +294,8 @@ def docstring_from_type_hints(repo_dir: Path, overwrite_script: bool = False, te
 
 def main():
     """Execute when running this script."""
-    python_tips_dir = Path.cwd().joinpath('Medium/Python tips')
-    # python_tips_dir = Path.cwd().joinpath("Python tips")
+    python_tips_dir = Path.cwd().joinpath('Medium/Python_tips')
+    # python_tips_dir = Path.cwd().joinpath("Python_tips")
 
     docstring_from_type_hints(python_tips_dir, overwrite_script=True, test=False)
 
